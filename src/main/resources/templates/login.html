@@ -23,22 +23,22 @@
 
         <div class="row g-3 align-items-center">
 
-            <form
-                    action="/"
-                    method="">
+            <form th:action="@{/users/login}" method="post">
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
-                        <input type="text"
+                        <input type="text" th:value="${username}"
                                name="username"
-                               required minlength="4" maxlength="20"
+                               required minlength="3" maxlength="20"
                                id="inputUsername"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
                     </div>
                 </div>
+                <small th:if="${username != null}" id="usernameUniqueError"
+                       class="text-danger rounded">Incorrect username or password.</small>
                 <div>
                     <div class="col-auto">
                         <label for="inputPassword" class="col-form-label ">Password</label>
@@ -46,7 +46,7 @@
                     <div class="col-auto">
                         <input type="password"
                                name="password"
-                               required minlength="4" maxlength="20"
+                               required minlength="3" maxlength="20"
                                id="inputPassword" class="form-control"
                                aria-describedby="passwordHelpInline">
                     </div>

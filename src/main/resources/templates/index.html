@@ -1,12 +1,12 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:include="~{fragment/head}"></th:block>
+<head th:replace="/fragment/commons::head"></head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-<th:block th:include="~{fragment/nav}"></th:block>
-
+    <!--<th:block th:include="~{fragment/nav}"></th:block>-->
+    <header th:replace="/fragment/commons::nav"></header>
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
@@ -71,17 +71,14 @@
 
     <!-- Portfolio -->
     <section class="gallery">
-        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px"
-             height="200px" alt="">
-        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px"
-             height="200px" alt="">
+        <img th:each="p : ${pics}" th:src="*{p}" width="200px" height="200px" alt="">
     </section>
 
     <!-- <script th:src="@{/js/weather.js}"></script> -->
 </div>
 <!-- Wrapper Ends -->'
 
-<th:block th:include="~{fragment/footer}"></th:block>
+<footer th:replace="/fragment/commons::footer"></footer>
 </body>
 
 </html>
